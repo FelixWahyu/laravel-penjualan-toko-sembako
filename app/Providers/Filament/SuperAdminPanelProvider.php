@@ -26,7 +26,8 @@ class SuperAdminPanelProvider extends PanelProvider
             ->default()
             ->id('superAdmin')
             ->path('superAdmin')
-            ->login()
+            ->authGuard('web')
+            ->login(fn() => route('login'))
             ->colors([
                 'primary' => Color::Amber,
             ])
