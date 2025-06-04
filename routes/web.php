@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\KategoriController;
-use App\Http\Controllers\Admin\ProdukController;
-use App\Http\Controllers\DonaturController;
-use App\Http\Controllers\Kasir\MahasiswaController;
-use App\Http\Controllers\Kasir\TransaksiController;
-use App\Http\Controllers\ProfileController;
 use App\Models\Kategori;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DonaturController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ProdukController;
+use App\Http\Controllers\Admin\KategoriController;
+use App\Http\Controllers\Kasir\MahasiswaController;
+use App\Http\Controllers\Kasir\TransaksiController;
 
 Route::get('/', function () {
     return view('index');
@@ -22,8 +23,8 @@ Route::middleware(['auth', 'verified', 'kasir'])->group(function () {
     Route::get('/all-Produk', [MahasiswaController::class, 'listProduk'])->name('kasir.allProduk');
 });
 
-// Route::middleware(['auth', 'verified', 'donatur'])->group(function () {
-//     Route::get('/donatur', [DonaturController::class, 'index'])->name('donatur.dashboard');
+// Route::middleware(['auth', 'verified', 'superAdmin'])->group(function () {
+//     Route::get('/super-admin', [DonaturController::class, 'index'])->name('superAdmin.dashboard');
 // });
 
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
@@ -54,5 +55,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Route::post('/logout', function () {
+//     Auth::logout();
+//     request()->session()->invalidate();
+//     request()->session()->regenerateToken();
+
+//     return redirect('/'); // atau redirect('/login');
+// })->name('logout');
 
 require __DIR__ . '/auth.php';

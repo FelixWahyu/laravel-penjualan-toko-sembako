@@ -16,7 +16,7 @@ class DonaturMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check() || Auth::user()->role_user !== 'donatur') {
+        if (!Auth::check() || Auth::user()->role_user !== 'superAdmin') {
             return redirect('/')->with('error', 'Anda tidak memiliki izin untuk mengakses halaman ini.');
         }
 

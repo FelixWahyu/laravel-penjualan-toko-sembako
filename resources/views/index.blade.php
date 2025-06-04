@@ -23,7 +23,7 @@
         @if (Route::has('login'))
             <nav class="d-flex align-items-center justify-content-end gap-3">
                 @auth
-                    <a href="{{ Auth::user()->role_user === 'admin' ? url('/admin') : (Auth::user()->role_user === 'donatur' ? url('/donatur') : url('/kasir')) }}"
+                    <a href="{{ Auth::user()->role_user === 'admin' ? url('/admin') : (Auth::user()->role_user === 'superAdmin' ? url('/superAdmin') : url('/kasir')) }}"
                         class="btn btn-outline-primary">
                         Dashboard
                     </a>

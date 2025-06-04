@@ -28,6 +28,7 @@ class SuperAdminPanelProvider extends PanelProvider
             ->path('superAdmin')
             ->authGuard('web')
             ->login(fn() => route('login'))
+            // ->getLogoutUrl('login')
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -53,7 +54,11 @@ class SuperAdminPanelProvider extends PanelProvider
                 DispatchServingFilamentEvent::class,
             ])
             ->authMiddleware([
-                Authenticate::class,
+                // Authenticate::class,
+                'web',
+                'auth',
+                // \App\Http\Middleware\EnsureSuperAdmin::class,
+                \App\Http\Middleware\DonaturMiddleware::class,
             ]);
     }
 }
