@@ -20,7 +20,7 @@
     <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center pt-4">
         <div class="mb-3">
             <a href="/">
-                <x-application-logo class="" style="width: 100px; height: 100px; color: gray;" />
+                {{-- <x-application-logo class="" style="width: 100px; height: 100px; color: gray;" /> --}}
             </a>
         </div>
         <h3>TOKO RASIKUN</h3>

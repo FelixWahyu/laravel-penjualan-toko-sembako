@@ -28,7 +28,7 @@ Route::middleware(['auth', 'verified', 'kasir'])->group(function () {
 // });
 
 Route::middleware(['auth', 'verified', 'admin'])->group(function () {
-    Route::get('/owner', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 
     Route::get('/kategori', [KategoriController::class, 'index'])->name('admin.kategori');
     Route::get('/kategori/tambah', [KategoriController::class, 'create'])->name('admin.kategori.tambah');

@@ -1,21 +1,19 @@
 <nav class="d-flex vh-100 overflow-hidden">
     <!-- Sidebar -->
-    <div class="d-flex flex-column flex-shrink-0 p-3 bg-success shadow-sm border"
+    <div class="d-flex flex-column flex-shrink-0 p-3 shadow-sm border"
         style="width: 250px; height: 100vh; position: sticky; top: 0;">
         @if (Auth::user()->role_user === 'admin')
-            <a href="{{ route('admin.dashboard') }}"
-                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none text-dark">
-                <x-application-logo class="me-2" style="height: 50px; width: auto;" />
+            <a href="{{ route('admin.dashboard') }}" class="mb-3 mb-md-5 mx-md-auto text-decoration-none text-dark">
+                {{-- <x-application-logo class="me-2" style="height: 50px; width: auto;" /> --}}
                 <span class="fs-5 text-white fw-semibold">TOKO RASIKUN</span>
             </a>
         @else
-            <a href="{{ route('dashboard') }}"
-                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none text-dark">
-                <x-application-logo class="me-2" style="height: 50px; width: auto;" />
+            <a href="{{ route('dashboard') }}" class="mb-3 mb-md-5 mx-md-auto text-decoration-none text-dark">
+                {{-- <x-application-logo class="me-2" style="height: 50px; width: auto;" /> --}}
                 <span class="fs-5 text-white fw-semibold">TOKO RASIKUN</span>
             </a>
         @endif
-        <hr>
+
         <ul class="nav nav-pills flex-column mb-auto">
             <x-nav-link :href="Auth::user()->role_user === 'admin' ? route('admin.dashboard') : (Auth::user()->role_user === 'donatur' ? route('donatur.dashboard') : route('dashboard'))" :active="Auth::user()->role_user === 'admin' ? request()->routeIs('admin.dashboard') : (Auth::user()->role_user === 'donatur' ? request()->routeIs('donatur.dashboard') : request()->routeIs('dashboard'))">
                 <span class="me-2">
